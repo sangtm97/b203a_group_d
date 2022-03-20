@@ -4,14 +4,13 @@ session_start();
 require_once 'models/UserModel.php';
 $userModel = new UserModel();
 
-$user = NULL; //Add new user
-$_id = NULL;
+$user = null; //Add new user
+$_id = null;
 
 if (!empty($_GET['id'])) {
     $_id = $_GET['id'];
-    $user = $userModel->findUserById($_id);//Update existing user
+    $user = $userModel->findUserById($_id); //Update existing user
 }
-
 
 if (!empty($_POST['submit'])) {
 
@@ -28,34 +27,62 @@ if (!empty($_POST['submit'])) {
 <html>
 <head>
     <title>User form</title>
-    <?php include 'views/meta.php' ?>
+    <?php include 'views/meta.php'?>
 </head>
 <body>
     <?php include 'views/header.php'?>
     <div class="container">
 
-            <?php if ($user || !isset($_id)) { ?>
+            <?php if ($user || !isset($_id)) {?>
                 <div class="alert alert-warning" role="alert">
                     User form
                 </div>
                 <form method="POST">
                     <input type="hidden" name="id" value="<?php echo $_id ?>">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input class="form-control" name="name" placeholder="Name" value="<?php if (!empty($user[0]['name'])) echo $user[0]['name'] ?>">
+                        <label for="userName">User Name</label>
+                        <input class="form-control" name="userName" placeholder="User Name" value="<?php if (!empty($user[0]['userName'])) {
+    echo $user[0]['userName'];
+}
+    ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input class="form-control" name="firstName" placeholder="First Name" value="<?php if (!empty($user[0]['firstName'])) {
+    echo $user[0]['firstName'];
+}
+    ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="LastName">Last Name</label>
+                        <input class="form-control" name="LastName" placeholder="Name" value="<?php if (!empty($user[0]['LastName'])) {
+    echo $user[0]['LastName'];
+}
+    ?>">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
-
+                    <div class="form-group">
+                        <label for="Sex">Sex</label>
+                        <input type="Sex" name="Sex" class="form-control" placeholder="Sex">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="phone" name="phone" class="form-control" placeholder="Phone">
+                    </div>                   
                     <button type="submit" name="submit" value="submit" class="btn btn-primary">Submit</button>
                 </form>
-            <?php } else { ?>
+            <?php } else {?>
                 <div class="alert alert-success" role="alert">
                     User not found!
                 </div>
-            <?php } ?>
+            <?php }?>
     </div>
 </body>
 </html>
