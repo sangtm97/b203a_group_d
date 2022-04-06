@@ -32,7 +32,9 @@ $users = $userModel->getUsers($params);
                         <th scope="col">ID</th>
                         <th scope="col">Username</th>
                         <th scope="col">Fullname</th>
-                        <th scope="col">Type</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Sex</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -47,7 +49,13 @@ $users = $userModel->getUsers($params);
                                 <?php echo $user['fullname']?>
                             </td>
                             <td>
-                                <?php echo $user['type']?>
+                                <?php echo $user['email']?>
+                            </td>
+                            <td>
+                                <?php echo $user['phone']?>
+                            </td>
+                            <td>
+                                <?php echo $user['sex']?>
                             </td>
                             <td>
                                 <a href="form_user.php?id=<?php echo $user['id'] ?>">
