@@ -33,6 +33,20 @@ class UserModel extends BaseModel {
     }
 
     /**
+     * Authentication user
+     * @param $email
+     * @param $password
+     * @return array
+     */
+    public function loginEmail($email, $password) {
+        $md5Password = md5($password);
+        $sql = 'SELECT * FROM users WHERE email = "' . $email . '" AND password = "'.$md5Password.'"';
+
+        $user = $this->select($sql);
+        return $user;
+    }
+
+    /**
      * Delete user by id
      * @param $id
      * @return mixed
